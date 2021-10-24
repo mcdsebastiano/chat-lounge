@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const msgTArea = document.querySelector("#msg");
   const chatForm = document.forms["chat-form"];
 
-  var socket = io("https://admg-c.glitch.me/chat");
+  var socket = io("https://chat-lounge.herokuapp.com/chat");
   
   const sendMsg = event => {
     event.preventDefault();
@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   socket.on("send", data => {
     if (
-      data.body === "Welcome to the ADMG Lounge Chatroom." &&
+      data.body === "Welcome to the Lounge Chatroom." &&
       chatMsgs.children.length > 0
     ) {
       const hrule = document.createElement("hr");
@@ -69,6 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
     content.classList.add("body");
 
     content.innerText = data.body;
+	console.log(data.username);
     meta.innerHTML = `<strong>${data.username}</strong> `;
     time.innerText = new Date(data.time).toLocaleString();
 

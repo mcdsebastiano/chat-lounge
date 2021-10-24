@@ -11,15 +11,13 @@ const io = socketio(server);
 let currentUser;
 const users = [];
 
-const mongoURI = process.env.MongoURI;
-
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-});
+}).then(()=>console.log('MongoDB Connected...'))
+.catch(err => console.log(err));
 
 mongoose.connection
-  .once("open", () => console.log("MongoDB Connection Successful"))
   .on("error", error => console.warn("Warning", error));
 
 const Message = mongoose.model(
@@ -57,7 +55,7 @@ app.post("/enter", (req, res) => {
 });
 
 let chat = io.of("/chat").on("connection", socket => {
-  const room = "ADMG Lounge";
+  const room = "Chat Lounge";
 
   socket.on("join", data => {
     if (typeof currentUser !== "undefined") {
@@ -71,7 +69,7 @@ let chat = io.of("/chat").on("connection", socket => {
         messages.forEach(message => socket.emit("send", message));
 
         socket.emit("send", {
-          body: "Welcome to the ADMG Lounge Chatroom.",
+          body: "Welcome to the Chat Lounge Chatroom.",
           username: "Mr. Roboto",
           time: Date.now()
         });

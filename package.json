@@ -1,7 +1,7 @@
 {
-  "name": "node-chatroom",
+  "name": "node-chat-lounge",
   "version": "1.0.0",
-  "description": "Realtime chat built for the physicians at the ADMG",
+  "description": "Realtime web chat app",
   "main": "server.js",
   "scripts": {
     "start": "node server",
@@ -11,10 +11,10 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.10.9",
+    "mongoose": "^5.13.12",
     "socket.io": "^2.4.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.14"
   }
 }
