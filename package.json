@@ -1,0 +1,20 @@
+{
+  "name": "node-chatroom",
+  "version": "1.0.0",
+  "description": "Realtime chat built for the physicians at the ADMG",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Montana Sebastiano",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "socket.io": "^2.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
